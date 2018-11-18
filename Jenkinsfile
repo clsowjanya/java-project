@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy stage....'
-		    archiveArtifacts 'rectangle-${BUILD_NUMBER}.jar'
+		    archiveArtifacts artifacts: 'rectangle-${BUILD_NUMBER}.jar'
 		
 		
             }
