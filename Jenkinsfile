@@ -5,19 +5,23 @@ pipeline {
     stages {
         stage('Unit Tests') {
             steps {
-                git credentialsId: 'github-credential', url: 'https://github.com/clsowjanya/java-project.git'
+                    echo 'Unit Tests Stage....'
+		    git credentialsId: 'github-credential', url: 'https://github.com/clsowjanya/java-project.git'
 				sh 'ant -f test.xml -v'
 				junit 'reports/result.xml'
             }
         }
         stage('Build') {
             steps {
+		    echo 'Build stage....'
                 sh 'ant -f build.xml -v'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploy stage....'
+		    archiveArtifacts 'rectangle.jar'
+		
             }
         }
     }
