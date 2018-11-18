@@ -23,7 +23,7 @@ pipeline {
 		archiveArtifacts artifacts: 'dist/rectangle-${BUILD_NUMBER}.jar'
 		  writeFile file: "output/rectangle-${BUILD_NUMBER}.jar", text: "This file is useful, need to archive it."
 
-		 sh ("aws s3 cp rectangle-${BUILD_NUMBER}.jar s3://assignment-9/rectangle-${BUILD_NUMBER}.jar")
+		
 		
             }
         }
