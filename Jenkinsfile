@@ -21,7 +21,7 @@ pipeline {
           steps {
             echo 'Deploy stage....'
 		archiveArtifacts artifacts: 'dist/rectangle-${BUILD_NUMBER}.jar'
-		   sh "aws s3 cp 'dist/rectangle-${BUILD_NUMBER}.jar' s3://assignment-9/ "
+		 aws s3 cp 'dist/rectangle-${BUILD_NUMBER}.jar' s3://assignment-9/
 		
             }
         }
