@@ -1,7 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 
 node('linux') { 
-	stages {
+	
 		stage('Unit Tests') {    
 			steps {
 				git credentialsId: 'github-credential', url: 'https://github.com/clsowjanya/java-project.git'
@@ -10,5 +10,5 @@ node('linux') {
 			}
 		}
 		
-	}
+	
 }
