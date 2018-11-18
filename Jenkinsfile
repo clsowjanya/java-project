@@ -1,14 +1,21 @@
-properties([pipelineTriggers([githubPush()])])
+pipeline {
+    agent any
 
-node('linux') { 
-	
-		stage('Unit Tests') {    
-			steps {
-				git credentialsId: 'github-credential', url: 'https://github.com/clsowjanya/java-project.git'
-				sh 'ant -f test.xml -v'
-				junit 'reports/result.xml'
-			}
-		}
-		
-	
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
