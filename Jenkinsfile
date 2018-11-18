@@ -20,10 +20,8 @@ pipeline {
         stage('Deploy') {
           steps {
             echo 'Deploy stage....'
-		archiveArtifacts artifacts: 'output/rectangle-${BUILD_NUMBER}.jar'
- 		  
-		
-		
+		archiveArtifacts artifacts: 'dist/rectangle-${BUILD_NUMBER}.jar'
+ 		sh(" aws s3 cp dist/rectangle-${BUILD_NUMBER}.jar s3://assignment-9/rectangle-${BUILD_NUMBER}.jar")		
             }
         }
     }
