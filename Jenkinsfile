@@ -17,13 +17,13 @@ pipeline {
                 sh 'ant -f build.xml -v'
             }
         }
-        stage('Deploy') {
-          steps {
-            echo 'Deploy stage....'
-		archiveArtifacts artifacts: 'dist/rectangle-${BUILD_NUMBER}.jar'
-		sh(" aws s3 cp artifacts/*.jar s3://assignment-9/rectangle-${BUILD_NUMBER}.jar")		  
- 		
-            }
+       stage('Report') {
+			steps {
+				echo 'Report stage....'
+				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAJDZYCW5FP2DPR5VA', credentialsId: '', secretKeyVariable: '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']]) {
+					sh(" aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins")		
+				}
+			}
         }
 	
 	
