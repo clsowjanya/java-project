@@ -1,7 +1,6 @@
 properties([pipelineTriggers([githubPush()])])
 
 node('linux') { 
-	agent any
 	stage('Unit Tests') {    
 		git credentialsId: 'github-credential', url: 'https://github.com/clsowjanya/java-project.git'
 		sh 'ant -f test.xml -v'
