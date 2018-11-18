@@ -27,8 +27,11 @@ pipeline {
 	stage('Report') {
           steps {
             echo 'Report stage....'
- 		sh(" aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins")		
-            }
+ 	    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAJDZYCW5FP2DPR5VA', credentialsId: '', secretKeyVariable: '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']]) {
+		sh(" aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins")		
+	    }
+          }
         }
+	
     }
 }
