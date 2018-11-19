@@ -1,6 +1,6 @@
 properties([pipelineTriggers([githubPush()])])
 node('linux') {
-    agent any
+    
 
     stages {
         stage('Unit Tests') {
