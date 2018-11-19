@@ -1,5 +1,5 @@
 properties([pipelineTriggers([githubPush()])])
-pipeline {
+node('linux') {
     agent any
 
     stages {
