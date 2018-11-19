@@ -1,6 +1,6 @@
 properties([pipelineTriggers([githubPush()])])
 
-node('linux') { 
+pipeline { 
 	stages {
 		stage('Unit Tests') {    
 			steps {
